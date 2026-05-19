@@ -5,6 +5,9 @@ on:
     - cron: '*/30 * * * *'
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -16,10 +19,13 @@ jobs:
       - name: Random chance commit
         run: |
           R=$((RANDOM%3))
+
           if [ $R -eq 0 ]; then
             echo "Updated on $(date)" >> log.txt
-            git config --global user.name "22230902mani"
-            git config --global user.email "151734916+22230902mani@users.noreply.github.com"
+
+            git config --global user.name "Devaraju89"
+            git config --global user.email "devarajkuruba18@gmail.com"
+
             git add .
             git commit -m "Random activity commit"
             git push
